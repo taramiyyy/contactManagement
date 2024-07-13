@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Yagut";
+    src: url("../fonts/B\ Yagut\ Bold_0.ttf");
+    src: url("../fonts/B\ Yagut_0.ttf");
+    src: url("..//fonts/Lalezar-Regular.otf");
+}
+
+body{
+    font-family: "Yagut" , "Lalezar";
+}
