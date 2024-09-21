@@ -1,8 +1,15 @@
+import { useContext } from 'react'
+
 import Contact from './Contact'
-import { BLONDEY } from "../helpers/Colors"
 import Spinner from './Spinner'
 
-const Contacts = ({ contacts, loading }) => {
+import { ContactContext } from '../context/ContactContext'
+
+import { BLONDEY } from "../helpers/Colors"
+import { Link } from 'react-router-dom'
+
+const Contacts = () => {
+    const { contacts, loading, deleteContact } = useContext(ContactContext)
     return (
         <div>
             <section>
@@ -11,9 +18,9 @@ const Contacts = ({ contacts, loading }) => {
                         <div className="row">
                             <div className="col">
                                 <p className="h3" dir="rtl">
-                                    <button className="btn mx-2 mt-2" dir="rtl" style={{ backgroundColor: BLONDEY }}>
+                                    <Link to={"add"} className="btn mx-2 mt-2" dir="rtl" style={{ backgroundColor: BLONDEY }}>
                                         <i className="fa fa-plus"></i>
-                                        افزودن مخاطب</button>
+                                        افزودن مخاطب</Link>
                                 </p>
                             </div>
                         </div>
@@ -25,9 +32,10 @@ const Contacts = ({ contacts, loading }) => {
                     {
                         loading ? <Spinner /> :
                             contacts.length > 0 ? contacts.map(c => (
-                                <Contact key={c.id} contacts={c} />
+                                <Contact key={c.id} contacts={c}
+                                    deleteContact={() => deleteContact(c.id, c.fullname)} />
                             )) : (
-                                <div className="text-warning text-center"> <i class="fa fa-warning"></i>  
+                                <div className="text-warning text-center"> <i class="fa fa-warning"></i>
                                     مخاطبی یافت نشد <i class="fa fa-warning"></i>
                                 </div>
                             )

@@ -7,3 +7,13 @@ input[type="number"]::placeholder{
 body{
     background-color: #c53211;
 }
+
+.spinner{
+    align-items: center;
+    justify-content: center;
+}
+
+.img_contacts{
+    width: 150px;
+    height: 150px;
+}
